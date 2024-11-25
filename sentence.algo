@@ -1,0 +1,43 @@
+ALGORITHM sentence
+VAR
+    char: CHAR
+    length, word, vowels: INTEGER
+    previouschar: CHAR
+BEGIN
+  length <- 0
+  words <- 0
+  vowels <- 0
+  previouschar <- ' '
+
+  WRITE "Enter a sentence ending with a period (.) :"
+  REPEAT
+    READ char
+   
+        IF char <> '.' THEN
+            length <- length + 1
+        END IF
+
+        
+        IF char IN ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'] THEN
+            vowels <- vowels + 1
+        END IF
+
+        
+        IF char = ' ' AND previousChar <> ' ' THEN
+            words <- words + 1
+        END IF
+
+        
+        previousChar <- char
+    UNTIL char = '.'
+
+    
+    IF previousChar <> ' ' THEN
+        words <- words + 1
+    END IF
+
+    WRITE "Length of the sentence: ", length
+    WRITE "Number of words: ", words
+    WRITE "Number of vowels: ", vowels
+END
+  
